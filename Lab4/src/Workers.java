@@ -46,6 +46,9 @@ public class Workers {
      * поле день рождения. по умолчанию будет текущая дата
      **/
     private LocalDate birthday = LocalDate.now();
+    /**константы класса**/
+    public static  final LocalDate MAX_DATA = LocalDate.now();
+    public static int MIN_SALARIES = 10000;
 
     /**
      * геттер для id
@@ -130,7 +133,9 @@ public class Workers {
      * сеттер для salaries
      **/
     public void setSalaries(int salaries) {
-        this.salaries = salaries;
+        if (salaries<MIN_SALARIES)
+            this.salaries = MIN_SALARIES;
+        else this.salaries = salaries;
     }
 
     /**
@@ -144,7 +149,10 @@ public class Workers {
      * сеттер для birthday
      **/
     public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
+        if (birthday.isAfter(MAX_DATA))
+            this.birthday = MAX_DATA;
+        else
+            this.birthday = birthday;
     }
 
     /**
@@ -162,9 +170,15 @@ public class Workers {
         this.surname = surname;
         this.father_name = father_name;
         this.post = post;
-        this.salaries = salaries;
-        this.birthday = birthday;
+        if (salaries<MIN_SALARIES)
+            this.salaries = MIN_SALARIES;
+        else this.salaries = salaries;
+        if (birthday.isAfter(MAX_DATA))
+            this.birthday = MAX_DATA;
+        else
+            this.birthday = birthday;
     }
+
 
     /**
      * метод возвращающий индекс работника с наименьшим возрастом
