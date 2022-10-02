@@ -32,6 +32,10 @@ public class Market {
      * поле дата продажи
      **/
     private LocalDate date_seller = LocalDate.now();
+    /**константы класса**/
+    public static  final LocalDate MAX_DATA = LocalDate.now();
+    public static int MIN_PRICE = 1;
+    public static int MIN_QUANTITY = 1;
 
     /**
      * геттед для salesman
@@ -75,7 +79,10 @@ public class Market {
      **/
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        if (quantity < MIN_QUANTITY)
+            this.quantity = MIN_QUANTITY;
+        else
+            this.quantity = quantity;
     }
 
     /***геттер для price*/
@@ -89,7 +96,10 @@ public class Market {
      **/
 
     public void setPrice(int price) {
-        this.price = price;
+        if (price < MIN_PRICE)
+            this.price = MIN_PRICE;
+        else
+            this.price = price;
     }
 
     /**
@@ -105,7 +115,11 @@ public class Market {
      **/
 
     public void setDate_seller(LocalDate date_seller) {
-        this.date_seller = date_seller;
+
+        if (date_seller.isAfter(MAX_DATA))
+            this.date_seller = MAX_DATA;
+        else
+            this.date_seller = date_seller;
     }
 
     /**
@@ -121,9 +135,18 @@ public class Market {
     public Market(String salesman, String name_product, int quantity, int price, LocalDate date_seller) {
         this.salesman = salesman;
         this.name_product = name_product;
-        this.quantity = quantity;
-        this.price = price;
-        this.date_seller = date_seller;
+        if (quantity < MIN_QUANTITY)
+            this.quantity = MIN_QUANTITY;
+        else
+            this.quantity = quantity;
+        if (price < MIN_PRICE)
+            this.price = MIN_PRICE;
+        else
+            this.price = price;
+        if (date_seller.isAfter(MAX_DATA))
+            this.date_seller = MAX_DATA;
+        else
+            this.date_seller = date_seller;
     }
 
     /**
