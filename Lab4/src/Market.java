@@ -135,9 +135,9 @@ public class Market {
     public Market(String salesman, String name_product, int quantity, int price, LocalDate date_seller) {
         this.salesman = salesman;
         this.name_product = name_product;
-        this.quantity = quantity;
-        this.price = price;
-        this.date_seller = date_seller;
+        this.setQuantity(quantity)
+        this.setPrice(price)
+        this.setDate_seller(date_seller);
     }
 
     /**
@@ -153,7 +153,7 @@ public class Market {
                 System.out.print("The date of sold is " + markets[i].getDate_seller() + ".");
             }
             for (int j = i; j < markets.length - 1; j++) {
-                if (markets[i].getSalesman() == salesman && markets[max_index].getPrice() < markets[j + 1].getPrice()) {
+                if (markets[i].getSalesman().equals(salesman) && markets[max_index].getPrice() < markets[j + 1].getPrice()) {
                     max_index = i;
                 }
             }
