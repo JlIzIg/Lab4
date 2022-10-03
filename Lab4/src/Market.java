@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.time.Month;
 
 /**
  * Базовый уровень.
@@ -32,8 +31,10 @@ public class Market {
      * поле дата продажи
      **/
     private LocalDate date_seller = LocalDate.now();
-    /**константы класса**/
-    public static  final LocalDate MAX_DATA = LocalDate.now();
+    /**
+     * константы класса
+     **/
+    public static final LocalDate MAX_DATA = LocalDate.now();
     public static int MIN_PRICE = 1;
     public static int MIN_QUANTITY = 1;
 
@@ -125,7 +126,7 @@ public class Market {
     /**
      * конструктор класса
      **/
-    public Market() {
+    public Market(String name_product, int quantity, int price) {
     }
 
     /**
@@ -135,32 +136,11 @@ public class Market {
     public Market(String salesman, String name_product, int quantity, int price, LocalDate date_seller) {
         this.salesman = salesman;
         this.name_product = name_product;
-        this.setQuantity(quantity)
-        this.setPrice(price)
+        this.setQuantity(quantity);
+        this.setPrice(price);
         this.setDate_seller(date_seller);
     }
 
-    /**
-     * метод который выводит количество товаров, проданных конкретным продавцом, выводит сведенья о них, определяет из них товар с максимальной стоимостью
-     **/
-    public static void getNumberOfSellingProducts(Market[] markets, String salesman) {
-        int quantity = 0;
-        int max_index = 0;
-        for (int i = 0; i < markets.length; i++) {
-            if (markets[i].getSalesman().equals(salesman)) {
-                quantity += markets[i].getQuantity();
-                System.out.printf("\nThe product is %s, it's quantity is %d, it's price is %d.", markets[i].getName_product(), markets[i].getQuantity(), markets[i].getPrice());
-                System.out.print("The date of sold is " + markets[i].getDate_seller() + ".");
-            }
-            for (int j = i; j < markets.length - 1; j++) {
-                if (markets[i].getSalesman().equals(salesman) && markets[max_index].getPrice() < markets[j + 1].getPrice()) {
-                    max_index = i;
-                }
-            }
-        }
-        System.out.printf("\nThe quantity of products sold by %s is %d.", salesman, quantity);
-        System.out.printf("\nThe highest price is %d of product %s.", markets[max_index].getPrice(), markets[max_index].getName_product());
-    }
 
     /**
      * enum для поля salesman, то есть возможные значения имён продавцов
