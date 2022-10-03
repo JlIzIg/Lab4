@@ -10,8 +10,7 @@ public class Main {
         work[2] = new Workers(2, "Diana", "Clark", "Josephine", Workers.Post.seller.toString(), 46000, LocalDate.of(1990, Month.DECEMBER, 3));
         work[3] = new Workers(3, "Sara", "James", "Mary", Workers.Post.programmer.toString(), 44000, LocalDate.of(2002, Month.OCTOBER, 1));
         work[4] = new Workers(4, "Tom", "Coder", "Smith", Workers.Post.worker.toString(), 44000, LocalDate.of(2001, Month.APRIL, 4));
-        String info = Workers.getInfo(work, Workers.getMinAge(work, work.length));
-        System.out.println(info);
+
 
 /**демонстрация класса Market**/
         Market[] market = new Market[10];
@@ -25,7 +24,6 @@ public class Main {
         market[7] = new Market(Market.Name_sal.ПЕТРОВ.toString(), Market.Product_NAME.КНИГА.toString(), 5, 200, LocalDate.of(2022, Month.APRIL, 8));
         market[8] = new Market(Market.Name_sal.ИВАНОВ.toString(), Market.Product_NAME.ПУЗЫРИ.toString(), 2, 20, LocalDate.of(2022, Month.APRIL, 9));
         market[9] = new Market(Market.Name_sal.ЛЕРМОНТОВ.toString(), Market.Product_NAME.КНИГА.toString(), 5, 200, LocalDate.of(2022, Month.APRIL, 10));
-        Market.getNumberOfSellingProducts(market, Market.Name_sal.ИВАНОВ.toString());
 
     }
 }
