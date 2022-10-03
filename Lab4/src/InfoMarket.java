@@ -42,9 +42,9 @@ public class InfoMarket {
         int[] arr = getSoldProducts(salesman);
         int max_index = arr[0];
         for (int i = 0; i < arr.length-1; i++)
-                if (market[arr[i]].getPrice() < market[arr[i]+1].getPrice()) {
-                    max_index = arr[i]+1;
-            }
+                 if (market[max_index].getPrice() < market[arr[i+1]].getPrice()) {
+                    max_index = arr[i+1];
+                 }
         String str = "Продал: " + market[max_index].getSalesman() + ". Товар: " + market[max_index].getName_product() + ". Штук: " + market[max_index].getQuantity() + ". Цена: " + market[max_index].getPrice() + ". Дата продажи " + market[max_index].getDate_seller();
         return str;
     }
