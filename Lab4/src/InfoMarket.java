@@ -18,7 +18,7 @@ public class InfoMarket {
    
     }
 
-    public static int[] getInfoNumberOfSellingProducts(Market[] markets, String salesman) {
+    public int[] getInfoNumberOfSellingProducts( String salesman) {
         int N = 0;
         int quantity = 0;
         for (int i = 0; i < markets.length; i++) {
