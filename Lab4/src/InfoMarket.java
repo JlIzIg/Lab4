@@ -1,7 +1,6 @@
 public class InfoMarket {
     private Market[] market;
-    private String salesman;
-
+    
 
     public Market[] getMarket() {
         return market;
@@ -11,20 +10,12 @@ public class InfoMarket {
         this.market = market;
     }
 
-    public String getSalesman() {
-        return salesman;
-    }
-
-    public void setSalesman(String salesman) {
-        this.salesman = salesman;
-    }
-
     public InfoMarket() {
     }
 
-    public InfoMarket(Market[] market, String salesman) {
+    public InfoMarket(Market[] market) {
         this.market = market;
-        this.salesman = salesman;
+   
     }
 
     public static int[] getInfoNumberOfSellingProducts(Market[] markets, String salesman) {
