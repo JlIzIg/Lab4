@@ -147,7 +147,7 @@ public class Market {
         int quantity = 0;
         int max_index = 0;
         for (int i = 0; i < markets.length; i++) {
-            if (markets[i].getSalesman() == salesman) {
+            if (markets[i].getSalesman().equals(salesman)) {
                 quantity += markets[i].getQuantity();
                 System.out.printf("\nThe product is %s, it's quantity is %d, it's price is %d.", markets[i].getName_product(), markets[i].getQuantity(), markets[i].getPrice());
                 System.out.print("The date of sold is " + markets[i].getDate_seller() + ".");
