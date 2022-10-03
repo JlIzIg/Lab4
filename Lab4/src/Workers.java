@@ -1,6 +1,4 @@
-import java.awt.*;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.Period;
 import java.util.Arrays;
 
@@ -16,7 +14,7 @@ import java.util.Arrays;
  * Дата рождения
  **/
 
-public class Workers {
+public class Worker {
     /**
      * поле id ведено для удобства
      **/
@@ -46,9 +44,13 @@ public class Workers {
      * поле день рождения. по умолчанию будет текущая дата
      **/
     private LocalDate birthday = LocalDate.now();
-    /**константы класса**/
-    public static  final LocalDate MAX_DATA = LocalDate.of(LocalDate.now().getYear()-18, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
-    public static  final LocalDate MIN_DATA = LocalDate.of(LocalDate.now().getYear()-90, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
+    /**
+     * константы класса
+     **/
+    public static final int MIN_AGE = 18;
+    public static final int MAX_AGE = 90;
+    public static final LocalDate MAX_DATA = LocalDate.of(LocalDate.now().getYear() - MIN_AGE, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
+    public static final LocalDate MIN_DATA = LocalDate.of(LocalDate.now().getYear() - MAX_AGE, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
     public static int MIN_SALARIES = 10000;
 
     /**
@@ -134,7 +136,7 @@ public class Workers {
      * сеттер для salaries
      **/
     public void setSalaries(int salaries) {
-        if (salaries<MIN_SALARIES)
+        if (salaries < MIN_SALARIES)
             this.salaries = MIN_SALARIES;
         else this.salaries = salaries;
     }
@@ -161,52 +163,24 @@ public class Workers {
     /**
      * конструктор класса
      **/
-    public Workers() {
+    public Worker() {
     }
 
     /**
      * параметризированный конструктор класса
      **/
-    public Workers(int id, String name, String surname, String father_name, String post, int salaries, LocalDate birthday) {
+    public Worker(int id, String name, String surname, String father_name, String post, int salaries, LocalDate birthday) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.father_name = father_name;
         this.post = post;
-        if (salaries<MIN_SALARIES)
-            this.salaries = MIN_SALARIES;
-        else this.salaries = salaries;
-        if (birthday.isAfter(MAX_DATA))
-            this.birthday = MAX_DATA;
-        else if (birthday.isBefore(MIN_DATA))
-            this.birthday = MIN_DATA;
-        else
-            this.birthday = birthday;
+        this.setSalaries(salaries);
+        this.setBirthday(birthday);
     }
 
 
-    /**
-     * метод возвращающий индекс работника с наименьшим возрастом
-     **/
-    public static int getMinAge(Workers[] work, int N) {
-        int[] age = new int[N];
-        for (int i = 0; i < N; i++) {
-            age[i] = Period.between(work[i].getBirthday(), LocalDate.now()).getYears();
-        }
-        System.out.println(Arrays.toString(age));
-        int min_index = 0;
-        for (int i = 0; i < work.length - 1; i++) {
-            if (age[min_index] > age[i + 1]) min_index = (i + 1);
-        }
-        return min_index;
-    }
 
-    /**
-     * метод возвращающий строку информации о сотруднике из массива сотрудников и id
-     **/
-    public static String getInfo(Workers[] work, int id) {
-        return "Worker is " + work[id].getName() + " " + work[id].getSurname() + " " + work[id].getFather_name() + ". Post is " + work[id].getPost() + ". Salaries is " + work[id].getSalaries() + ". Date of birthday is " + work[id].getBirthday();
-    }
 
     /**
      * enum для поля пост, то есть возможные значения для должности
