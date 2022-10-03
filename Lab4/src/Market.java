@@ -126,7 +126,7 @@ public class Market {
     /**
      * конструктор класса
      **/
-    public Market(String name_product, int quantity, int price) {
+    public Market() {
     }
 
     /**
