@@ -135,18 +135,9 @@ public class Market {
     public Market(String salesman, String name_product, int quantity, int price, LocalDate date_seller) {
         this.salesman = salesman;
         this.name_product = name_product;
-        if (quantity < MIN_QUANTITY)
-            this.quantity = MIN_QUANTITY;
-        else
-            this.quantity = quantity;
-        if (price < MIN_PRICE)
-            this.price = MIN_PRICE;
-        else
-            this.price = price;
-        if (date_seller.isAfter(MAX_DATA))
-            this.date_seller = MAX_DATA;
-        else
-            this.date_seller = date_seller;
+        this.quantity = quantity;
+        this.price = price;
+        this.date_seller = date_seller;
     }
 
     /**
