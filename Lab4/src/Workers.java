@@ -47,7 +47,8 @@ public class Workers {
      **/
     private LocalDate birthday = LocalDate.now();
     /**константы класса**/
-    public static  final LocalDate MAX_DATA = LocalDate.now();
+    public static  final LocalDate MAX_DATA = LocalDate.of(LocalDate.now().getYear()-18, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
+    public static  final LocalDate MIN_DATA = LocalDate.of(LocalDate.now().getYear()-90, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
     public static int MIN_SALARIES = 10000;
 
     /**
@@ -151,6 +152,8 @@ public class Workers {
     public void setBirthday(LocalDate birthday) {
         if (birthday.isAfter(MAX_DATA))
             this.birthday = MAX_DATA;
+        else if (birthday.isBefore(MIN_DATA))
+            this.birthday = MIN_DATA;
         else
             this.birthday = birthday;
     }
@@ -175,6 +178,8 @@ public class Workers {
         else this.salaries = salaries;
         if (birthday.isAfter(MAX_DATA))
             this.birthday = MAX_DATA;
+        else if (birthday.isBefore(MIN_DATA))
+            this.birthday = MIN_DATA;
         else
             this.birthday = birthday;
     }
